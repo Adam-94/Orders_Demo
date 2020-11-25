@@ -7,35 +7,36 @@ var closeMsg = document.getElementsByClassName('msg-close')[0];
 var div = document.getElementById('message-div');
 
 
-$("#table").on('click','#table-view',function(){
-    // get the current row
-    var currentRow=$(this).closest("tr"); 
-    var customerID =currentRow.find("td:eq(0)").text(); // customer ID
-    
-    fetch('/view_customer', {
-        method: "POST",
-        credentials: "include",
-        body: JSON.stringify(customerID),
-        cache: "no-store",
-        headers: new Headers({
-            "content-type": "application/json"
-        })
-    })
+$('#searchbar').on('keyup', function() {
 
-    .then(function(res) {
-        if (res.status !== 200) {
-            console.log('Problem with status code: ' + res.status);
-            return;
-        }
+    let search = $('#searchbar').val();
 
-        res.json().then(function (data) {
-            console.log(data);
-        });
-    })
-    .catch(function (error) {
-        console.log('Fetch error: ' + error)
+        // POST
+        fetch('/', {
+
+        // Specify the method
+        method: 'POST',
+
+        // JSON
+        headers: {
+            'Content-Type': 'application/json'
+        },
+
+        // A JSON payload
+        body: JSON.stringify(search)
+
+    }).then(function (response) { // At this point, Flask has printed our JSON
+        return response.text();
+    }).then(function (data) {
+        console.log(data);
+        let val = $('#searchbar').val();
+        $('body').html(data);
+        $('#searchbar').val(val);
+        $('#searchbar').focus();
     });
 })
+
+ 
 
 addBtn.onclick = function() {
     console.log('show');
@@ -55,12 +56,19 @@ closeMsg.onclick = function() {
 function validateAndSend() {
     if (form.fname.value == '' || form.lname.value == '' ||
         form.address.value == '' || form.phone.value == '') {
-            console.log($('form').serializeArray());
             console.log(form.fname.value);
         }
     else {
-        console.log('Submitting form')
         $('#customer-form').submit();
+    }
+}
+
+function validateOrderForm() {
+    if (form.invoice.value == '' || form.order.value == '') {
+        console.log(form.invoice.value);
+    }
+    else {
+        $('#order-form').submit();
     }
 }
 

@@ -18,11 +18,11 @@
 
         <div class="container">
             <div class="functions">
-                <input class="searchBar" type="text" size="50" class="search" onkeydown="search(this)"
-                placeholder="Search for customer..." onfocus="this.placeholder = ''"
-                onblur="this.placeholder = 'Search for customer...'"/>
+              <input id="searchbar" autocomplete="off" class="searchBar" name="text" type="text" size="50" class="search"
+              placeholder="Search for customer..." onfocus="this.placeholder = ''"
+              onblur="this.placeholder = 'Search for customer...'" required/>
                 <button class="entryBtn" id="modal-btn"><i class="fas fa-plus"></i></button>
-            </div>
+              </div>
             <div class="card-container">
                 {% block content %}{% endblock %}
             </div>

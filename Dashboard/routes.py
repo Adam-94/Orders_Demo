@@ -5,6 +5,7 @@ from Dashboard.forms import LoginForm
 from Dashboard.models import db, Customer, Order
 from Dashboard import app
 from werkzeug.utils import secure_filename
+from flask_msearch import Search
 
 import os
 
@@ -12,9 +13,67 @@ UPLOAD_PATH = 'E:\\Desktop\\Programming\\Dashboard\\Dashboard\\static\\Orders\\'
 PDF_PATH = '/static/Orders/'
 
 @app.route('/')
+@app.route('/', methods=['GET','POST'])
 def index():
-    customers = Customer.query.all()
-    return render_template('index.html', customers=customers)
+    if request.method == 'POST':
+          search = request.get_json()
+          print(f'Searching for {search}') 
+
+          session['search'] = search
+          return redirect(url_for('index'))
+    else:
+          search = session.get('search')
+          if search == '' or search == None:
+              customers = Customer.query.all()
+          else:
+              customers = Customer.query.msearch(search, fields=['address', 'name'], limit=5).all()           
+          
+          return render_template('index.html', customers=customers, search=search)
+
+@app.route('/search', methods=['GET','POST'])
+def search():
+      if request.method == 'POST':
+          search = request.get_json()
+          print(f'Searching for {search}') 
+
+          session['search'] = search
+          return redirect(url_for('search'))
+      else:
+        search = session.get('search')
+        query = Customer.query.msearch(search, fields=['address', 'name'], limit=5).all() 
+        return render_template('search.html', customers=query, search=search)
+
+      
+
+# @app.route('/search', methods=['POST'])
+# def search():
+#     customer = {
+#         "id": '',
+#         "date": '',
+#         "name": '',
+#         "address": '',
+#         "phone": '',
+#         "email": ''
+#     }
+
+#     if request.method == 'POST':
+#         search = request.get_json()
+
+#         print(f'Search: {search}')
+#         query = Customer.query.filter_by(id=search).first()
+#         print(query.name)
+
+#         customer['id'] = query.id
+#         customer['date'] = query.date_added.strftime('%d-%m-%Y')
+#         customer['name'] = query.name
+#         customer['address'] = query.address
+#         customer['phone'] = query.phone
+#         customer['email'] = query.email
+
+#         session['customer'] = customer
+#         session['search'] = search
+
+#         return jsonify(customer)
 
 @app.route('/', methods=['POST'])
 def add_customer():
@@ -63,8 +122,6 @@ def add_order(customer_id):
     
     flash('New Order Added!')
     return redirect(url_for('orders', customer_id=customer_id))
-
-
 
 
 

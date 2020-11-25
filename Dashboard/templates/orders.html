@@ -63,7 +63,7 @@
               <td >{{ order.id }}</td>
               <td>{{ order.customer_id }}</td>
               <td>{{ order.date_added.strftime('%d-%m-%Y') }}</td>
-              <td><a href="{{ order.order_sheet }}">File</a></td>
+              <td><a href="{{ order.order_sheet }}" class="view">PDF</a></td>
             </tr>
             {% endfor %}
   
@@ -72,7 +72,7 @@
       </div>
 
       <div class="form-modal" id="modal">      
-        <form enctype="multipart/form-data" action="{{ url_for('add_order', customer_id=customer.id) }}" method="POST" class="form" id="customer-form">
+        <form enctype="multipart/form-data" action="{{ url_for('add_order', customer_id=customer.id) }}" method="POST" class="form" id="order-form">
             <span class="close">&times;</span>
             <!-- start form group -->
             <div class="form-group">
@@ -93,7 +93,7 @@
             <!-- end form group -->
 
               <!-- end form group -->
-              <button type="submit" class='submit-form' >Submit</button>
+              <button type="submit" class='submit-form' onclick="validateAndSend()" >Submit</button>
             </form>
     </div>
 

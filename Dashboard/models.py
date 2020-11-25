@@ -1,11 +1,17 @@
 from datetime import datetime
 from flask_sqlalchemy import SQLAlchemy
 from Dashboard import app
+from flask_msearch import Search
 
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///site.db'
 db = SQLAlchemy(app)
+search = Search()
+search.init_app(app)
 
 class Customer(db.Model):
+    __tablename__ = 'customer'
+    __searchable__ = ['name', 'address']
+
     id = db.Column(db.Integer, primary_key=True)
     date_added = db.Column(db.DateTime, default=datetime.utcnow())
     name = db.Column(db.String(20), nullable=False)
