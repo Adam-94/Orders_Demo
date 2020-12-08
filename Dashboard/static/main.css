@@ -149,11 +149,12 @@ textarea {
 /* Modal Content */
 .form {
     background-color: #fefefe;
-    margin: auto;
+    margin: 0 auto;
     padding: 20px;
     border: 1px solid #888;
     border-radius: 20px;
     text-align: center;
+    width: 50%;
 }
 
 /* The Close Button */
@@ -170,13 +171,6 @@ textarea {
     text-decoration: none;
     cursor: pointer;
 }
-
-.form {
-    height: auto;
-    width: 60%;
-    position: relative;
-    align-items: center;
-  }
   
   .form-group {
     position: relative;
@@ -306,6 +300,9 @@ textarea {
     vertical-align: middle;
   }
 
+  .delete-btn {
+    padding: 2px;
+  }
 /* 
 	------------------------- Mobile -------------------------
 */
@@ -313,7 +310,6 @@ textarea {
 @media only screen and (max-width: 850px) {
 
   .container {
-      display: flex;
       flex-wrap: wrap;
       background-color: #3A435E;
       border-radius: 18px;
@@ -334,10 +330,7 @@ textarea {
   }
 
   .searchBar {
-      border: solid 1px rgba(255,255,255,.5);
-      -webkit-box-shadow: 2px 4px 12px 0px rgba(0,0,0,0.75);
-      -moz-box-shadow: 2px 4px 12px 0px rgba(0,0,0,0.75);
-      box-shadow: 2px 4px 12px 0px rgba(0,0,0,0.75);
+
       color: #8f94ad;
       padding-left: 16px;
       border-radius: 18px;  
@@ -445,13 +438,6 @@ textarea {
       text-decoration: none;
       cursor: pointer;
   }
-
-  .form {
-      height: auto;
-      width: 60%;
-      position: relative;
-      align-items: center;
-    }
     
     .form-group {
       position: relative;
@@ -533,7 +519,6 @@ textarea {
 @media only screen and (max-width: 590px) {
 
     .container {
-        display: flex;
         flex-wrap: wrap;
         background-color: #3A435E;
         border-radius: 18px;
@@ -665,13 +650,6 @@ textarea {
         text-decoration: none;
         cursor: pointer;
     }
-
-    .form {
-        height: auto;
-        width: 60%;
-        position: relative;
-        align-items: center;
-      }
       
       .form-group {
         position: relative;
@@ -751,7 +729,6 @@ textarea {
 
 @media only screen and (max-width: 340px) {
     .container {
-        display: flex;
         flex-wrap: wrap;
         background-color: #3A435E;
         border-radius: 18px;

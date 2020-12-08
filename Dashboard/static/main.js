@@ -12,7 +12,7 @@ $('#searchbar').on('keyup', function() {
     let search = $('#searchbar').val();
 
         // POST
-        fetch('/', {
+        fetch('/home', {
 
         // Specify the method
         method: 'POST',
@@ -36,6 +36,15 @@ $('#searchbar').on('keyup', function() {
     });
 })
 
+
+$(document).ready(function() {
+    if ($('.flash__body').html != "") {
+        $( ".flash" ).addClass( "animate--drop-in-fade-out" );
+        setTimeout(function(){
+        $( ".flash" ).removeClass( "animate--drop-in-fade-out" );
+        }, 3500);
+    }
+});
  
 
 addBtn.onclick = function() {
