@@ -1,12 +1,16 @@
 from datetime import datetime
-from flask_sqlalchemy import SQLAlchemy
-from Dashboard import app
-from flask_msearch import Search
+from Dashboard import app, db, search, login_manager
+from flask_login import UserMixin
 
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///site.db'
-db = SQLAlchemy(app)
-search = Search()
-search.init_app(app)
+@login_manager.user_loader
+def load_user(user_id):
+    return Admin.query.get(int(user_id))
+
+class Admin(db.Model, UserMixin):
+    id = db.Column(db.Integer, primary_key=True)
+    email = db.Column(db.String(120), nullable=True, unique=True)
+    password = db.Column(db.String(60), nullable=False)
+
 
 class Customer(db.Model):
     __tablename__ = 'customer'
