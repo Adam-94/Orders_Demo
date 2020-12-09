@@ -28,7 +28,7 @@
                 <td>{{ customer.address }}</td>
                 <td>{{ customer.phone }}</td>
                 <td>{{ customer.email }}</td>
-                <td><a href="{{ url_for('orders', customer_id=customer.id) }}" class="view" id="table-view">View</a></td>  
+                <td><a href="{{ url_for('main.orders', customer_id=customer.id) }}" class="view" id="table-view">View</a></td>  
             </tr>
             {% endfor %}
     </tbody>

@@ -4,7 +4,7 @@ from flask import render_template, url_for, request, jsonify
 
 from Dashboard.main.forms import LoginForm
 from Dashboard.models import Customer, Order, Admin
-from Dashboard import app, db, bcrypt
+from Dashboard import db, bcrypt
 from werkzeug.utils import secure_filename
 from flask_login import login_user, current_user, login_required
 
@@ -16,23 +16,23 @@ UPLOAD_PATH = 'E:\\Desktop\\Programming\\Dashboard\\Dashboard\\static\\Orders\\'
 PDF_PATH = '/static/Orders/'
 
 
-@app.route('/', methods=['GET','POST'])
+@main.route('/', methods=['GET','POST'])
 def login():
     if current_user.is_authenticated:
-        return redirect(url_for('index'))
+        return redirect(url_for('main.index'))
     form = LoginForm()
     if form.validate_on_submit():
         admin = Admin.query.filter_by(email=form.email.data).first()
         if admin and bcrypt.check_password_hash(admin.password, form.password.data):
             login_user(admin)
             next_page = request.args.get('next')
-            return redirect(next_page) if next_page else redirect(url_for('index'))
+            return redirect(next_page) if next_page else redirect(url_for('main.index'))
         else:
             flash('Login Unsuccessful. Please check email and password')
     return render_template('login.html', form=form)
 
 
-@app.route('/home', methods=['GET','POST'])
+@main.route('/home', methods=['GET','POST'])
 @login_required
 def index():
     if request.method == 'POST':
@@ -40,7 +40,7 @@ def index():
           print(f'Searching for {search}') 
 
           session['search'] = search
-          return redirect(url_for('index'))
+          return redirect(url_for('main.index'))
     else:
           search = session.get('search')
           if search == '' or search == None:
@@ -49,7 +49,7 @@ def index():
               customers = Customer.query.msearch(search, fields=['address', 'name'], limit=5).all()                 
           return render_template('index.html', customers=customers, search=search)
 
-@app.route('/customer', methods=['POST'])
+@main.route('/customer', methods=['POST'])
 @login_required
 def add_customer():
     if request.method == 'POST':
@@ -66,9 +66,9 @@ def add_customer():
         db.session.commit()
     
     flash('New Customer Added!')
-    return redirect(url_for('index'))
+    return redirect(url_for('main.index'))
 
-@app.route('/customer_orders/<int:customer_id>')
+@main.route('/customer_orders/<int:customer_id>')
 @login_required
 def orders(customer_id):
     customer = Customer.query.get_or_404(customer_id)
@@ -76,7 +76,7 @@ def orders(customer_id):
 
     return render_template('orders.html', customer=customer, orders=order)
     
-@app.route('/customer_orders/<int:customer_id>', methods=['POST'])
+@main.route('/customer_orders/<int:customer_id>', methods=['POST'])
 @login_required
 def add_order(customer_id):
     if request.method == 'POST':
@@ -98,9 +98,9 @@ def add_order(customer_id):
         db.session.commit()
     
     flash('New Order Added!')
-    return redirect(url_for('orders', customer_id=customer_id))
+    return redirect(url_for('main.orders', customer_id=customer_id))
 
-@app.route('/delete_order/<int:customer_id>/<int:order_id>', methods=['POST'])
+@main.route('/delete_order/<int:customer_id>/<int:order_id>', methods=['POST'])
 @login_required
 def delete_order(customer_id, order_id):
     order = Order.query.filter_by(id=order_id).first()
@@ -108,5 +108,5 @@ def delete_order(customer_id, order_id):
     
     db.session.delete(order)
     db.session.commit()
-    return redirect(url_for('orders', customer_id=customer_id))
+    return redirect(url_for('main.orders', customer_id=customer_id))
 

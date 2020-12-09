@@ -44,7 +44,7 @@
                             <td>{{ customer.address }}</td>
                             <td>{{ customer.phone }}</td>
                             <td>{{ customer.email }}</td>
-                            <td><a href="{{ url_for('orders', customer_id=customer.id) }}" class="view" id="table-view">View</a></td>
+                            <td><a href="{{ url_for('main.orders', customer_id=customer.id) }}" class="view" id="table-view">View</a></td>
                           </tr>
                       {% endfor %}
                     </tbody>
@@ -53,7 +53,7 @@
 
                 
                   <div class="form-modal" id="modal">
-                    <form action="{{ url_for('add_customer') }}" method="POST" class="form" id="customer-form">
+                    <form action="{{ url_for('main.add_customer') }}" method="POST" class="form" id="customer-form">
                         <span class="close">&times;</span>
                         <!-- start form group -->
                         <div class="form-group">

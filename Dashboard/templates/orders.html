@@ -67,7 +67,7 @@
               <td><a href="{{ order.order_sheet }}" class="view">PDF</a></td>
               <td>
                 
-                <form action="{{ url_for('delete_order',customer_id=order.customer_id, order_id=order.id) }}" method="post">
+                <form action="{{ url_for('main.delete_order',customer_id=order.customer_id, order_id=order.id) }}" method="post">
                   <button class="delete-btn" type="submit">Delete</button>
                 </form>
               </td>
@@ -79,7 +79,7 @@
       </div>
 
       <div class="form-modal" id="modal">      
-        <form enctype="multipart/form-data" action="{{ url_for('add_order', customer_id=customer.id) }}" method="post" class="form" id="order-form">
+        <form enctype="multipart/form-data" action="{{ url_for('main.add_order', customer_id=customer.id) }}" method="post" class="form" id="order-form">
             <span class="close">&times;</span>
             <!-- start form group -->
             <div class="form-group">
