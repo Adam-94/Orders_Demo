@@ -1,5 +1,5 @@
-from Dashboard import app
+from Dashboard import create_app
 
+app = create_app()
 if __name__ == '__main__':
     app.run(host='192.168.0.23', debug=True)
-    
