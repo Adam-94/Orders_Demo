@@ -7,8 +7,41 @@ body {
     font-family: 'Open Sans', sans-serif;
 }
 
-button{
-    display: inline-block;
+a {
+  width: 200px;
+  line-height: 36px;
+  display: block;
+  text-align: center;
+}
+
+a.link-btn {
+  -webkit-appearance: button;
+  -moz-appearance: button;
+  border: none;
+  border-radius: 10px;
+  width: 2.5em;
+  height: 2.5em;
+  margin: 0;
+  text-decoration: none;
+  background:#5fa8d3;
+  color: #ffffff;
+  font-family: sans-serif;
+  cursor: pointer;
+  text-align: center;
+  vertical-align: middle;
+}
+
+a.link-btn:hover {
+  background-color: #8f94ad;
+  color: #fff;
+}
+
+.btn-container {
+  display: flex;
+  float: right;
+}
+
+.logoutBtn, .entryBtn {
     border: none;
     border-radius: 10px;
     height: 2.5em;
@@ -19,10 +52,8 @@ button{
     font-family: sans-serif;
     cursor: pointer;
     text-align: center;
-    transition: background 250ms ease-in-out, 
-                transform 150ms ease;
-    -webkit-appearance: none;
-    -moz-appearance: none;    
+    margin-right: 10px;
+    margin-left: 10px;
 }
 
 button:hover {
@@ -45,7 +76,7 @@ textarea {
     background-color: #3A435E;
     border-radius: 18px;
     margin: auto;
-    width: 90%;
+    width: 95%;
     padding: 10px;
     overflow-y: auto;
     height: 80vh;
@@ -54,7 +85,6 @@ textarea {
 }
 
 .functions {
-    display: flex;
     height: 5vh;
     margin: 5px;
     justify-content: space-between;
@@ -74,8 +104,6 @@ textarea {
     outline: none;
     height: 2.5em;
 }
-
-
 
 .card-container {
     margin: auto;
@@ -107,7 +135,6 @@ textarea {
     color: #3A435E;
   }
 
-
   .order-table {
     border-collapse: collapse;
     font-family: sans-serif;
@@ -127,7 +154,7 @@ textarea {
   .order-table td,
   th {
     white-space: nowrap;
-    padding: 5px;
+    padding: 2px;
     color: #3A435E;
   }
 
@@ -278,22 +305,7 @@ textarea {
     color: #6C6F7F;
   }
 
-  .view {
-    background-color: #5fa8d3;
-    color: #fefefe;
-    text-decoration: none;
-    padding: 2px;
-    border-radius: 5px;
-  }
-
-  .view:visited {
-    text-decoration: none;
-    color: #fefefe;
-  }
-
-  .view:hover {
-    background-color: #8f94ad;
-  }
+  
 
   .badSearchContainer{
     text-align: center;
@@ -301,7 +313,19 @@ textarea {
   }
 
   .delete-btn {
-    padding: 2px;
+    display: inline-block;
+    border: none;
+    border-radius: 10px;
+    height: 2.5em;
+    width: 4em;
+    margin: 0;
+    text-decoration: none;
+    background:#5fa8d3;
+    color: #ffffff;
+    font-family: sans-serif;
+    cursor: pointer;
+    text-align: center;
+    margin-right: 10px;
   }
 /* 
 	------------------------- Mobile -------------------------
@@ -314,7 +338,7 @@ textarea {
       background-color: #3A435E;
       border-radius: 18px;
       margin: auto;
-      width: 90%;
+      width: 95%;
       padding: 10px;
       overflow-y: auto;
       height: 75vh;
@@ -338,16 +362,6 @@ textarea {
       width: 70%;
       outline: none;
       height: 2.5em;
-  }
-
-  .entryBtn {
-      border: solid 1px rgba(255,255,255,.5);
-      border-radius: 15px;
-      outline-style: none;
-      height: 2.5em;
-      -webkit-box-shadow: 2px 4px 12px 0px rgba(0,0,0,0.75);
-      -moz-box-shadow: 2px 4px 12px 0px rgba(0,0,0,0.75);
-      box-shadow: 2px 4px 12px 0px rgba(0,0,0,0.75);
   }
 
   .magic-table {
@@ -398,6 +412,7 @@ textarea {
     .magic-table td::before {
       font-weight: bold;
     }
+
 
   /* The Modal (background) */
   .form-modal {
@@ -523,7 +538,7 @@ textarea {
         background-color: #3A435E;
         border-radius: 18px;
         margin: auto;
-        width: 90%;
+        width: 95%;
         padding: 10px;
         overflow-y: auto;
         height: 65vh;
@@ -550,16 +565,6 @@ textarea {
         width: 70%;
         outline: none;
         height: 2.5em;
-    }
-
-    .entryBtn {
-        border: solid 1px rgba(255,255,255,.5);
-        border-radius: 15px;
-        outline-style: none;
-        height: 2.5em;
-        -webkit-box-shadow: 2px 4px 12px 0px rgba(0,0,0,0.75);
-        -moz-box-shadow: 2px 4px 12px 0px rgba(0,0,0,0.75);
-        box-shadow: 2px 4px 12px 0px rgba(0,0,0,0.75);
     }
 
     .magic-table {
@@ -733,7 +738,7 @@ textarea {
         background-color: #3A435E;
         border-radius: 18px;
         margin: auto;
-        width: 80%;
+        width: 95%;
         padding: 10px;
         box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
     }
@@ -760,16 +765,6 @@ textarea {
         height: 2.5em;
     }
 
-    .entryBtn {
-        border: solid 1px rgba(255,255,255,.5);
-        border-radius: 15px;
-        outline-style: none;
-        height: 2.5em;
-        -webkit-box-shadow: 2px 4px 12px 0px rgba(0,0,0,0.75);
-        -moz-box-shadow: 2px 4px 12px 0px rgba(0,0,0,0.75);
-        box-shadow: 2px 4px 12px 0px rgba(0,0,0,0.75);
-    }
-
     .magic-table {
         margin-top: 20px;
         background-color: transparent;
@@ -784,7 +779,7 @@ textarea {
         display: flex;
         flex-direction: column;
         margin-bottom: 15px;
-        padding: 10px;
+        padding: 5px;
         border-radius: 4px;
         background-color: #fff;
         box-shadow: 0 3px 3px rgba(0, 0, 0, 0.2);
