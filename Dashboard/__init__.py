@@ -5,13 +5,12 @@ from flask_login import LoginManager
 from flask_bcrypt import Bcrypt
 from Dashboard.config import Config
 
-import secrets
 
 db = SQLAlchemy()
 search = Search()
 bcrypt = Bcrypt()
 login_manager = LoginManager()
-login_manager.login_view = 'login'
+login_manager.login_view = "login"
 
 
 def create_app(config_class=Config):
@@ -25,6 +24,7 @@ def create_app(config_class=Config):
 
     from Dashboard.main.routes import main
     from Dashboard.errors.handler import errors
+
     app.register_blueprint(main)
     app.register_blueprint(errors)
 
