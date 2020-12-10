@@ -1,105 +1,109 @@
 {% extends 'base.html' %}
 
-      {% block header %}
-        <h2 class=title>Starline Blinds & Awnings - Dashboard</h2>
-      {% endblock %}
-        <div class="container">
+{% block header %}
+<h2 class=title>Starline Blinds & Awnings - Dashboard</h2>
+{% endblock %}
+<div class="container">
 
-          {% with messages = get_flashed_messages() %}
-            {% if messages %}
-            {% for msg in messages %}
-                  <div class="message-div" id="message-div">
-                    <span class="msg-close">&times;</span>
-                    <p>{{ msg }}</p>
-                  </div>
-            {% endfor %}
-            {% endif %}
-            {% endwith%}
+  {% with messages = get_flashed_messages() %}
+  {% if messages %}
+  {% for msg in messages %}
+  <div class="flash">
+    <div class="flash__icon">
+      <i class="icon fa fa-check-circle-o"></i>
+    </div>
+    <p class="flash__body">{{ msg }}</p>
+  </div>
+  {% endfor %}
+  {% endif %}
+  {% endwith%}
 
-            <div class="card-container">
-              {% block content %}
-              {% if not customers %}
-                <div class="badSearchContainer">
-                  <h2 class="badSearchTitle">Sorry, that customer doesn't exist &#128542;</h2>
-                </div>
+  <div class="card-container">
+    {% block content %}
+    {% if not customers %}
+    <div class="badSearchContainer">
+      <h2 class="badSearchTitle">Sorry, that customer doesn't exist &#128542;</h2>
+    </div>
 
-                {% else %}
-                <table class="magic-table" id="table">
-                    <thead>
-                      <tr>
-                        <th scope="col">Customer ID</th>
-                        <th scope="col">Date</th>
-                        <th scope="col">Name</th>
-                        <th scope="col">Address</th>
-                        <th scope="col">Phone</th>
-                        <th scope="col">Email</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      {% for customer in customers %}
-                          <tr>
-                            <td >{{ customer.id }}</td>
-                            <td>{{ customer.date_added.strftime('%d-%m-%Y') }}</td>
-                            <td>{{ customer.name }}</td>
-                            <td>{{ customer.address }}</td>
-                            <td>{{ customer.phone }}</td>
-                            <td>{{ customer.email }}</td>
-                            <td><a href="{{ url_for('main.orders', customer_id=customer.id) }}" class="view" id="table-view">View</a></td>
-                          </tr>
-                      {% endfor %}
-                    </tbody>
-                  </table>
-                  {% endif %}
+    {% else %}
+    <table class="magic-table" id="table">
+      <thead>
+        <tr>
+          <th scope="col">Customer ID</th>
+          <th scope="col">Date</th>
+          <th scope="col">Name</th>
+          <th scope="col">Address</th>
+          <th scope="col">Phone</th>
+          <th scope="col">Email</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for customer in customers %}
+        <tr>
+          <td>{{ customer.id }}</td>
+          <td>{{ customer.date_added.strftime('%d-%m-%Y') }}</td>
+          <td>{{ customer.name }}</td>
+          <td>{{ customer.address }}</td>
+          <td>{{ customer.phone }}</td>
+          <td>{{ customer.email }}</td>
+          <td><a href="{{ url_for('main.orders', customer_id=customer.id) }}" class="link-btn" id="table-view">View</a>
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    {% endif %}
 
-                
-                  <div class="form-modal" id="modal">
-                    <form action="{{ url_for('main.add_customer') }}" method="POST" class="form" id="customer-form">
-                        <span class="close">&times;</span>
-                        <!-- start form group -->
-                        <div class="form-group">
-                          <input type="text" name="name" placeholder=" " id="name" autocomplete="off" required>
-                          <label for="name" class="label-name">
-                            <span class="content-name">Name</span>
-                          </label>
-                        </div>
-                         <!-- end form group -->
-                        
-                         <!-- start form group -->
-                        <div class="form-group">
-                          <input type="text" name="address" placeholder=" " id="address" autocomplete="off" required>
-                          <label for="address" class="label-name">
-                            <span class="content-name">Address</span>
-                          </label>
-                        </div>
-                        <!-- end form group -->
-                        
-                         <!-- start form group -->
-                        <div class="form-group">
-                          <input type="phone" name="phone" placeholder=" " id="phone" autocomplete="off" required>
-                          <label for="phone" class="label-name">
-                            <span class="content-name">Phone</span>
-                          </label>
-                        </div>
-                        <!-- end form group -->
 
-                         <!-- start form group -->
-                         <div class="form-group">
-                            <input type="email" name="email" placeholder=" " id="email" autocomplete="off">
-                            <label for="email" class="label-name">
-                              <span class="content-name">Email</span>
-                            </label>
-                          </div>
-                          <!-- end form group -->
-                          <button type="submit" class='submit-form' onclick="validateAndSend()" >Submit</button>
-                        </form>
-                  </div>
-                  {% endblock %}
-                  
-            </div>
+    <div class="form-modal" id="modal">
+      <form action="{{ url_for('main.add_customer') }}" method="POST" class="form" id="customer-form">
+        <span class="close">&times;</span>
+        <!-- start form group -->
+        <div class="form-group">
+          <input type="text" name="name" placeholder=" " id="name" autocomplete="off" required>
+          <label for="name" class="label-name">
+            <span class="content-name">Name</span>
+          </label>
         </div>
-  
-        
-        <script src="{{url_for('static', filename='main.js')}}"></script>
-        
-      </body>
+        <!-- end form group -->
+
+        <!-- start form group -->
+        <div class="form-group">
+          <input type="text" name="address" placeholder=" " id="address" autocomplete="off" required>
+          <label for="address" class="label-name">
+            <span class="content-name">Address</span>
+          </label>
+        </div>
+        <!-- end form group -->
+
+        <!-- start form group -->
+        <div class="form-group">
+          <input type="phone" name="phone" placeholder=" " id="phone" autocomplete="off" required>
+          <label for="phone" class="label-name">
+            <span class="content-name">Phone</span>
+          </label>
+        </div>
+        <!-- end form group -->
+
+        <!-- start form group -->
+        <div class="form-group">
+          <input type="email" name="email" placeholder=" " id="email" autocomplete="off">
+          <label for="email" class="label-name">
+            <span class="content-name">Email</span>
+          </label>
+        </div>
+        <!-- end form group -->
+        <button type="submit" class='submit-form' onclick="validateAndSend()">Submit</button>
+      </form>
+    </div>
+    {% endblock %}
+
+  </div>
+</div>
+
+
+<script src="{{url_for('static', filename='main.js')}}"></script>
+
+</body>
+
 </html>
