@@ -19,16 +19,18 @@ a.link-btn {
   -moz-appearance: button;
   border: none;
   border-radius: 10px;
-  width: 2.5em;
-  height: 2.5em;
+  width: 4.5em;
+  height: 2.2em;
   margin: 0;
   text-decoration: none;
   background:#5fa8d3;
   color: #ffffff;
+  font-weight: 900;
   font-family: sans-serif;
   cursor: pointer;
   text-align: center;
   vertical-align: middle;
+  margin-right: 10px;
 }
 
 a.link-btn:hover {
@@ -79,8 +81,7 @@ textarea {
     width: 95%;
     padding: 10px;
     overflow-y: auto;
-    height: 80vh;
-
+    height: 85vh;
     box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
 }
 
@@ -93,9 +94,7 @@ textarea {
 
 .searchBar {
     border: solid 1px rgba(255,255,255,.5);
-    -webkit-box-shadow: 2px 4px 12px 0px rgba(0,0,0,0.75);
-    -moz-box-shadow: 2px 4px 12px 0px rgba(0,0,0,0.75);
-    box-shadow: 2px 4px 12px 0px rgba(0,0,0,0.75);
+    box-shadow: 0 14px 28px rgba(0,0,0,0.15), 0 10px 10px rgba(0,0,0,0.12);
     color: #8f94ad;
     padding-left: 16px;
     border-radius: 18px;  
@@ -316,12 +315,13 @@ textarea {
     display: inline-block;
     border: none;
     border-radius: 10px;
-    height: 2.5em;
-    width: 4em;
+    height: 2.2em;
+    width: 4.5em;
     margin: 0;
     text-decoration: none;
     background:#5fa8d3;
     color: #ffffff;
+    font-weight: 900;
     font-family: sans-serif;
     cursor: pointer;
     text-align: center;
@@ -354,7 +354,8 @@ textarea {
   }
 
   .searchBar {
-
+      border: solid 1px rgba(255,255,255,.5);
+      box-shadow: 0 14px 28px rgba(0,0,0,0.15), 0 10px 10px rgba(0,0,0,0.12);
       color: #8f94ad;
       padding-left: 16px;
       border-radius: 18px;  
@@ -539,9 +540,9 @@ textarea {
         border-radius: 18px;
         margin: auto;
         width: 95%;
+        height: 85vh;
         padding: 10px;
         overflow-y: auto;
-        height: 65vh;
         box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
     }
 
@@ -555,9 +556,7 @@ textarea {
 
     .searchBar {
         border: solid 1px rgba(255,255,255,.5);
-        -webkit-box-shadow: 2px 4px 12px 0px rgba(0,0,0,0.75);
-        -moz-box-shadow: 2px 4px 12px 0px rgba(0,0,0,0.75);
-        box-shadow: 2px 4px 12px 0px rgba(0,0,0,0.75);
+        box-shadow: 0 14px 28px rgba(0,0,0,0.15), 0 10px 10px rgba(0,0,0,0.12);
         color: #8f94ad;
         padding-left: 16px;
         border-radius: 18px;  
@@ -739,23 +738,21 @@ textarea {
         border-radius: 18px;
         margin: auto;
         width: 95%;
+        height: 85vh;
         padding: 10px;
         box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
     }
 
     .functions {
         display: flex;
-        height: 5vh;
-        margin: 5px;
-        justify-content: space-between;
-        
+        flex-direction: column-reverse;
+        margin-top: 50px;
+        align-items: center;
     }
 
     .searchBar {
         border: solid 1px rgba(255,255,255,.5);
-        -webkit-box-shadow: 2px 4px 12px 0px rgba(0,0,0,0.75);
-        -moz-box-shadow: 2px 4px 12px 0px rgba(0,0,0,0.75);
-        box-shadow: 2px 4px 12px 0px rgba(0,0,0,0.75);
+        box-shadow: 0 14px 28px rgba(0,0,0,0.15), 0 10px 10px rgba(0,0,0,0.12);
         color: #8f94ad;
         padding-left: 16px;
         border-radius: 18px;  
@@ -763,6 +760,7 @@ textarea {
         width: 70%;
         outline: none;
         height: 2.5em;
+        margin-top: 20px;
     }
 
     .magic-table {
@@ -830,5 +828,4 @@ textarea {
         font-size: 28px;
         font-weight: bold;
       }
-
 }

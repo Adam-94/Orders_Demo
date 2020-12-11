@@ -7,12 +7,12 @@ var closeMsg = document.getElementsByClassName('msg-close')[0];
 var div = document.getElementById('message-div');
 
 
-$('#searchbar').on('keyup', function() {
+$('#searchbar').on('keyup', function () {
 
     let search = $('#searchbar').val();
 
-        // POST
-        fetch('/home', {
+    // POST
+    fetch('/home', {
 
         // Specify the method
         method: 'POST',
@@ -37,36 +37,36 @@ $('#searchbar').on('keyup', function() {
 })
 
 
-$(document).ready(function() {
+$(document).ready(function () {
     if ($('.flash__body').html != "") {
-        $( ".flash" ).addClass( "animate--drop-in-fade-out" );
-        setTimeout(function(){
-        $( ".flash" ).removeClass( "animate--drop-in-fade-out" );
-        }, 3500);
+        $(".flash").addClass("animate--drop-in-fade-out");
+        setTimeout(function () {
+            $(".flash").removeClass("animate--drop-in-fade-out");
+        }, 4500);
     }
 });
- 
 
-addBtn.onclick = function() {
+
+addBtn.onclick = function () {
     console.log('show');
     modal.style.display = 'block';
 }
 
-span.onclick = function() {
+span.onclick = function () {
     console.log('hide');
     modal.style.display = 'none';
     document.getElementById('customer-form').reset();
 }
 
-closeMsg.onclick = function() {
+closeMsg.onclick = function () {
     div.style.display = 'none';
 }
 
 function validateAndSend() {
     if (form.fname.value == '' || form.lname.value == '' ||
         form.address.value == '' || form.phone.value == '') {
-            console.log(form.fname.value);
-        }
+        console.log(form.fname.value);
+    }
     else {
         $('#customer-form').submit();
     }
