@@ -30,7 +30,8 @@
         onblur="this.placeholder = 'Search for customer...'" required />
       <div class="btn-container">
         <button class="entryBtn" id="modal-btn"><i class="fas fa-plus"></i></button>
-        <button class="logoutBtn" id="">Logout</button>
+        <a href="{{ url_for('main.index') }}" class="link-btn">Home</a>
+        <a href="{{ url_for('main.logout') }}" class="link-btn">Logout</a>
       </div>
     </div>
     <div class="card-container">
