@@ -1,7 +1,7 @@
 from flask import Blueprint, session, send_from_directory
 from flask import Flask, flash, redirect, jsonify
 from flask import render_template, url_for, request
-from flask_login import login_user, current_user, login_required
+from flask_login import login_user, current_user, login_required, logout_user
 from werkzeug.utils import secure_filename
 
 from Dashboard.main.forms import LoginForm
@@ -30,6 +30,12 @@ def login():
         else:
             flash("Login Unsuccessful. Please check email and password")
     return render_template("login.html", form=form)
+
+
+@main.route("/logout")
+def logout():
+    logout_user()
+    return redirect(url_for("main.login"))
 
 
 @main.route("/home", methods=["GET", "POST"])
@@ -99,11 +105,13 @@ def add_order(customer_id):
             id=form["invoice"], customer_id=customer_id, order_sheet=order_sheet
         )
 
-        print(order.__repr__())
-        db.session.add(order)
-        db.session.commit()
-
-    flash("New Order Added!")
+        if Order.query.filter_by(id=order.id).first():
+            flash("Error: Invoice number already in use")
+        else:
+            print(order.__repr__())
+            db.session.add(order)
+            db.session.commit()
+            flash("New Order Added!")
     return redirect(url_for("main.orders", customer_id=customer_id))
 
 
