@@ -93,17 +93,33 @@ def orders(customer_id):
 @login_required
 def add_order(customer_id):
     if request.method == "POST":
-        pdf = request.files["order"]
-        pdf.save(os.path.join(UPLOAD_PATH, secure_filename(pdf.filename)))
+        pdf_files = []
 
-        order_sheet = PDF_PATH + pdf.filename
+        files = request.files.getlist("order")
         form = request.form
-        print(pdf.filename)
-        print("Adding Order to database...\n")
 
-        order = Order(
-            id=form["invoice"], customer_id=customer_id, order_sheet=order_sheet
-        )
+        if len(files) > 1:
+            for pdf in files:
+                pdf.save(os.path.join(UPLOAD_PATH, secure_filename(pdf.filename)))
+                pdf_files.append(PDF_PATH + pdf.filename)
+
+            order = Order(
+                id=form["invoice"],
+                customer_id=customer_id,
+                order_sheet1=pdf_files[0],
+                order_sheet2=pdf_files[1],
+            )
+        else:
+            pdf = request.files["order"]
+            pdf.save(os.path.join(UPLOAD_PATH, secure_filename(pdf.filename)))
+            pdf_files.append(PDF_PATH + pdf.filename)
+
+            order = Order(
+                id=form["invoice"], customer_id=customer_id, order_sheet1=pdf_files[0]
+            )
+
+        print(pdf_files)
+        print("Adding Order to database...\n")
 
         if Order.query.filter_by(id=order.id).first():
             flash("Error: Invoice number already in use")
@@ -115,12 +131,13 @@ def add_order(customer_id):
     return redirect(url_for("main.orders", customer_id=customer_id))
 
 
-@main.route("/delete_order/<int:customer_id>/<int:order_id>", methods=["POST"])
+@main.route("/delete_order/<int:customer_id>/<int:order_id>", methods=["GET", "POST"])
 @login_required
 def delete_order(customer_id, order_id):
     order = Order.query.filter_by(id=order_id).first()
-    print("Deleting order: ")
+    print("Deleting order: ", order)
 
     db.session.delete(order)
     db.session.commit()
+    flash("Successfully Deleted Order!")
     return redirect(url_for("main.orders", customer_id=customer_id))
