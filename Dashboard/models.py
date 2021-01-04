@@ -38,10 +38,11 @@ class Order(db.Model):
     id = db.Column(db.Integer, unique=True, primary_key=True)
     customer_id = db.Column(db.Integer, db.ForeignKey("customer.id"), nullable=False)
     date_added = db.Column(db.DateTime, default=datetime.utcnow())
-    order_sheet = db.Column(db.String(300), nullable=False)
+    order_sheet1 = db.Column(db.String(300), nullable=False)
+    order_sheet2 = db.Column(db.String(300), nullable=True)
 
     def __repr__(self):
         return (
-            f"ID: {self.id} Customer ID: {self.customer_id}"
-            f"Path: {self.order_sheet} Date: {self.date_added}"
+            f"ID: {self.id} Date: {self.date_added}"
+            f"Order 1: {self.order_sheet1} Order 2: {self.order_sheet2}"
         )
