@@ -9,9 +9,18 @@ body {
 
 a {
   width: 200px;
-  line-height: 36px;
+  line-height: 32px;
   display: block;
   text-align: center;
+}
+
+.login-form {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 100%;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
 }
 
 a.link-btn {
@@ -36,6 +45,30 @@ a.link-btn {
 a.link-btn:hover {
   background-color: #8f94ad;
   color: #fff;
+}
+
+a.order-link {
+  -webkit-appearance: button;
+  -moz-appearance: button;
+  border: none;
+  border-radius: 10px;
+  width: 2.5em;
+  height: 2.2em;
+  margin: 0;
+  text-decoration: none;
+  background:#5fa8d3;
+  color: #ffffff;
+  font-weight: 900;
+  font-family: sans-serif;
+  cursor: pointer;
+  text-align: center;
+  vertical-align: middle;
+  margin-right: 10px;
+}
+
+ /* Hiding second order sheet if href is empty */
+#order2[href='None']{
+  display: none;
 }
 
 .btn-container {
@@ -162,7 +195,7 @@ textarea {
     display: none; /* Hidden by default */
     position: fixed; /* Stay in place */
     z-index: 1; /* Sit on top */
-    padding-top: 100px; /* Location of the box */
+    padding-top: 5%; /* Location of the box */
     left: 0;
     top: 0;
     width: 100%; /* Full width */
@@ -180,7 +213,7 @@ textarea {
     border: 1px solid #888;
     border-radius: 20px;
     text-align: center;
-    width: 50%;
+    width: 60%;
 }
 
 /* The Close Button */
@@ -196,6 +229,20 @@ textarea {
     color: #000;
     text-decoration: none;
     cursor: pointer;
+}
+
+.close-delete {
+  color: #aaaaaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close-delete:hover,
+.close-delete:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
 }
   
   .form-group {
@@ -327,6 +374,10 @@ textarea {
     text-align: center;
     margin-right: 10px;
   }
+
+  .deleteMessage {
+    color: #000;
+  }
 /* 
 	------------------------- Mobile -------------------------
 */
@@ -341,7 +392,7 @@ textarea {
       width: 95%;
       padding: 10px;
       overflow-y: auto;
-      height: 75vh;
+      height: 85vh;
       box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
   }
 
@@ -540,7 +591,7 @@ textarea {
         border-radius: 18px;
         margin: auto;
         width: 95%;
-        height: 85vh;
+        height: 75vh;
         padding: 10px;
         overflow-y: auto;
         box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
@@ -620,7 +671,7 @@ textarea {
         display: none; /* Hidden by default */
         position: fixed; /* Stay in place */
         z-index: 1; /* Sit on top */
-        padding-top: 100px; /* Location of the box */
+        padding-top: 20px; /* Location of the box */
         left: 0;
         top: 0;
         width: 100%; /* Full width */
@@ -738,7 +789,7 @@ textarea {
         border-radius: 18px;
         margin: auto;
         width: 95%;
-        height: 85vh;
+        height: 75vh;
         padding: 10px;
         box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
     }
@@ -757,7 +808,7 @@ textarea {
         padding-left: 16px;
         border-radius: 18px;  
         opacity: 1;
-        width: 70%;
+        width: 90%;
         outline: none;
         height: 2.5em;
         margin-top: 20px;
@@ -828,4 +879,45 @@ textarea {
         font-size: 28px;
         font-weight: bold;
       }
+
+      .order-table {
+        border-collapse: collapse;
+        font-family: sans-serif;
+        font-size: 10px;
+        background-color: #fff;
+        box-shadow: 0 3px 3px rgba(0, 0, 0, 0.1);
+        border-radius: 5px;
+        overflow-x: auto;
+        text-align: left;
+        width: 100%;
+      }
+      
+      .order-table tbody tr:nth-child(odd) {
+        background-color: rgba(100, 150, 250, 0.05);
+      }
+      
+      .order-table td,
+      th {
+        white-space: nowrap;
+        padding: 2px;
+        color: #3A435E;
+      }
+
+      a.order-link { 
+        height: 3em;
+      }
+    
+}
+
+@media only screen and (max-height: 568px) {
+  .container {
+      flex-wrap: wrap;
+      background-color: #3A435E;
+      border-radius: 18px;
+      margin: auto;
+      width: 95%;
+      height: 75vh;
+      padding: 10px;
+      box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+  }
 }
