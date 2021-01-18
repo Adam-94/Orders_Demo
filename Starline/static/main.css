@@ -1,0 +1,940 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&family=Roboto&display=swap');
+
+
+body {
+    background-color: #6C6F7F;
+    color: #f8edeb;
+    font-family: 'Open Sans', sans-serif;
+}
+
+a {
+  width: 200px;
+  line-height: 32px;
+  display: block;
+  text-align: center;
+}
+
+.login-form {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 100%;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+
+a.link-btn {
+  -webkit-appearance: button;
+  -moz-appearance: button;
+  border: none;
+  border-radius: 10px;
+  width: 4.5em;
+  height: 2.2em;
+  margin: 0;
+  text-decoration: none;
+  background:#5fa8d3;
+  color: #ffffff;
+  font-weight: 900;
+  font-family: sans-serif;
+  cursor: pointer;
+  text-align: center;
+  vertical-align: middle;
+  margin-right: 10px;
+}
+
+a.link-btn:hover {
+  background-color: #8f94ad;
+  color: #fff;
+}
+
+a.order-link {
+  -webkit-appearance: button;
+  -moz-appearance: button;
+  border: none;
+  border-radius: 10px;
+  width: 2.5em;
+  height: 2.2em;
+  margin: 0;
+  text-decoration: none;
+  background:#5fa8d3;
+  color: #ffffff;
+  font-weight: 900;
+  font-family: sans-serif;
+  cursor: pointer;
+  text-align: center;
+  vertical-align: middle;
+  margin-right: 10px;
+}
+
+ /* Hiding second order sheet if href is empty */
+#order2[href='None']{
+  display: none;
+}
+
+.btn-container {
+  display: flex;
+  float: right;
+}
+
+.logoutBtn, .entryBtn {
+    border: none;
+    border-radius: 10px;
+    height: 2.5em;
+    margin: 0;
+    text-decoration: none;
+    background:#5fa8d3;
+    color: #ffffff;
+    font-family: sans-serif;
+    cursor: pointer;
+    text-align: center;
+    margin-right: 10px;
+    margin-left: 10px;
+}
+
+button:hover {
+  background-color: #8f94ad;
+  color: #fff;
+}
+
+input[type='text'],
+input[type='number'],
+textarea {
+  font-size: 16px;
+}
+
+.title {
+  text-align: center;
+}
+
+
+.container {
+    background-color: #3A435E;
+    border-radius: 18px;
+    margin: auto;
+    width: 95%;
+    padding: 10px;
+    overflow-y: auto;
+    height: 85vh;
+    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+}
+
+.functions {
+    height: 5vh;
+    margin: 5px;
+    justify-content: space-between;
+    margin: auto;
+}
+
+.searchBar {
+    border: solid 1px rgba(255,255,255,.5);
+    box-shadow: 0 14px 28px rgba(0,0,0,0.15), 0 10px 10px rgba(0,0,0,0.12);
+    color: #8f94ad;
+    padding-left: 16px;
+    border-radius: 18px;  
+    opacity: 1;
+    width: 70%;
+    outline: none;
+    height: 2.5em;
+}
+
+.card-container {
+    margin: auto;
+    margin-top: 30px;
+    min-width: 50%;
+    max-width: 90%;
+}
+
+.magic-table {
+    border-collapse: collapse;
+    font-family: sans-serif;
+    font-size: 13px;
+    background-color: #fff;
+    box-shadow: 0 3px 3px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    overflow-x: auto;
+    text-align: left;
+    width: 100%;
+  }
+  
+  .magic-table tbody tr:nth-child(odd) {
+    background-color: rgba(100, 150, 250, 0.05);
+  }
+  
+  .magic-table td,
+  th {
+    white-space: nowrap;
+    padding: 5px;
+    color: #3A435E;
+  }
+
+  .order-table {
+    border-collapse: collapse;
+    font-family: sans-serif;
+    font-size: 13px;
+    background-color: #fff;
+    box-shadow: 0 3px 3px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    overflow-x: auto;
+    text-align: left;
+    width: 100%;
+  }
+  
+  .order-table tbody tr:nth-child(odd) {
+    background-color: rgba(100, 150, 250, 0.05);
+  }
+  
+  .order-table td,
+  th {
+    white-space: nowrap;
+    padding: 2px;
+    color: #3A435E;
+  }
+
+   /* The Modal (background) */
+   .form-modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    padding-top: 5%; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.5); /* Black w/ opacity */
+}
+
+/* Modal Content */
+.form {
+    background-color: #fefefe;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #888;
+    border-radius: 20px;
+    text-align: center;
+    width: 60%;
+}
+
+/* The Close Button */
+.close {
+    color: #aaaaaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.close-delete {
+  color: #aaaaaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close-delete:hover,
+.close-delete:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+  
+  .form-group {
+    position: relative;
+    height: 2.9rem;
+    overflow: hidden;
+  }
+  
+  .form-group:not(:first-child) {
+    margin-top: 3rem;
+  }
+  
+  .form input {
+    width: 100%;
+    height: 100%;
+    padding-top: 1rem;
+    border: none;
+    font-size: 1rem;
+    outline: none;
+  }
+  
+  .form input:placeholder-shown + .label-name .content-name {
+    transform: translateY(1.45rem);
+    color: gray;
+    font-size: 1rem;
+  }
+  
+  .form input:placeholder-shown + .label-name::after {
+    transform: translateX(-100%);
+  }
+  
+  .form input:not(:focus):invalid + .label-name::after {
+    border-bottom-color: red;
+  }
+  
+  .form label {
+    position: absolute;
+    bottom: 0px;
+    left: 0%;
+    height: 100%;
+    width: 100%;
+    pointer-events: none;
+    border-bottom: 1px solid gray;
+  }
+  
+  .form label::after {
+    content: "";
+    position: absolute;
+    left: 0px;
+    bottom: -3px;
+    height: 100%;
+    width: 100%;
+    border-bottom: 3px solid #5fa8d3;
+    transition: all 0.3s ease;
+    transform: translateX(0);
+  }
+  
+  .content-name {
+    position: absolute;
+    left: 0;
+    transition: all 0.3s ease;
+    top: 0rem;
+    font-size: 0.8rem;
+    color: #5fa8d3;
+  }
+
+  .submit-form {
+    margin-top: 20px;
+    border: solid 1px rgba(255,255,255,.5);
+    border-radius: 15px;
+    outline-style: none;
+    height: 2.5em;
+    -webkit-box-shadow: 2px 4px 12px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 2px 4px 12px 0px rgba(0,0,0,0.75);
+    box-shadow: 2px 4px 12px 0px rgba(0,0,0,0.75);
+  }
+
+  .message-div {
+    background-color: #5fa8d3;
+    border-radius: 5px;
+    padding: 1px;
+    -webkit-box-shadow: 2px 4px 12px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 2px 4px 12px 0px rgba(0,0,0,0.75);
+    box-shadow: 2px 4px 12px 0px rgba(0,0,0,0.75);
+    text-align: center;
+    margin: auto;
+    width: 90%;
+  }
+
+  .message-div p {
+    color: #fff;
+    font-weight: bold;
+    font-size: 28px;
+  }
+
+  .msg-close {
+    color: #fff;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    padding: 4px;
+  }
+
+  .msg-close:hover {
+    cursor: pointer;
+    color: #6C6F7F;
+  }
+
+  
+
+  .badSearchContainer{
+    text-align: center;
+    vertical-align: middle;
+  }
+
+  .delete-btn {
+    display: inline-block;
+    border: none;
+    border-radius: 10px;
+    height: 2.2em;
+    width: 4.5em;
+    margin: 0;
+    text-decoration: none;
+    background:#5fa8d3;
+    color: #ffffff;
+    font-weight: 900;
+    font-family: sans-serif;
+    cursor: pointer;
+    text-align: center;
+    margin-right: 10px;
+  }
+
+  .customer-delete-btn {
+    display: inline-block;
+    border: none;
+    border-radius: 10px;
+    height: 2.2em;
+    width: 4.5em;
+    margin: 0;
+    text-decoration: none;
+    background:#5fa8d3;
+    color: #ffffff;
+    font-weight: 900;
+    font-family: sans-serif;
+    cursor: pointer;
+    text-align: center;
+    margin-right: 10px;
+  }
+
+  .deleteMessage {
+    color: #000;
+  }
+/* 
+	------------------------- Mobile -------------------------
+*/
+
+@media only screen and (max-width: 850px) {
+
+  .container {
+      flex-wrap: wrap;
+      background-color: #3A435E;
+      border-radius: 18px;
+      margin: auto;
+      width: 95%;
+      padding: 10px;
+      overflow-y: auto;
+      height: 85vh;
+      box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+  }
+
+  .functions {
+      display: flex;
+      height: 5vh;
+      margin: 5px;
+      justify-content: space-between;
+      
+  }
+
+  .searchBar {
+      border: solid 1px rgba(255,255,255,.5);
+      box-shadow: 0 14px 28px rgba(0,0,0,0.15), 0 10px 10px rgba(0,0,0,0.12);
+      color: #8f94ad;
+      padding-left: 16px;
+      border-radius: 18px;  
+      opacity: 1;
+      width: 70%;
+      outline: none;
+      height: 2.5em;
+  }
+
+  .magic-table {
+      margin-top: 20px;
+      background-color: transparent;
+      box-shadow: none;
+    }
+  
+    .magic-table thead {
+      display: none;
+    }
+    .magic-table tr {
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 15px;
+      padding: 10px;
+      border-radius: 4px;
+      background-color: #fff;
+      box-shadow: 0 3px 3px rgba(0, 0, 0, 0.2);
+      text-align: left;
+    }
+    .magic-table tbody tr:nth-child(odd) {
+      background-color: #fff;
+    }
+    .magic-table td {
+      padding: 0.25rem;
+    }
+  
+    .magic-table td:nth-child(1) {
+      font-weight: bold;
+      font-size: 1.2em;
+    }
+    .magic-table td:nth-child(2)::before {
+      content: "Date: ";
+    }
+    .magic-table td:nth-child(3)::before {
+      content: "Name: ";
+    }
+    .magic-table td:nth-child(4)::before {
+      content: "Address: ";
+    }
+    .magic-table td:nth-child(5)::before {
+      content: "Phone: ";
+    }
+    .magic-table td:nth-child(6)::before {
+      content: "Email ";
+    }
+    .magic-table td::before {
+      font-weight: bold;
+    }
+
+
+  /* The Modal (background) */
+  .form-modal {
+      display: none; /* Hidden by default */
+      position: fixed; /* Stay in place */
+      z-index: 1; /* Sit on top */
+      padding-top: 100px; /* Location of the box */
+      left: 0;
+      top: 0;
+      width: 100%; /* Full width */
+      height: 100%; /* Full height */
+      overflow: auto; /* Enable scroll if needed */
+      background-color: rgb(0,0,0); /* Fallback color */
+      background-color: rgba(0,0,0,0.5); /* Black w/ opacity */
+  }
+  
+  /* Modal Content */
+  .form {
+      background-color: #fefefe;
+      margin: auto;
+      padding: 20px;
+      border: 1px solid #888;
+      border-radius: 20px;
+      text-align: center;
+  }
+  
+  /* The Close Button */
+  .close {
+      color: #aaaaaa;
+      float: right;
+      font-size: 28px;
+      font-weight: bold;
+  }
+  
+  .close:hover,
+  .close:focus {
+      color: #000;
+      text-decoration: none;
+      cursor: pointer;
+  }
+    
+    .form-group {
+      position: relative;
+      height: 2.9rem;
+      overflow: hidden;
+    }
+    
+    .form-group:not(:first-child) {
+      margin-top: 3rem;
+    }
+    
+    .form input {
+      width: 100%;
+      height: 100%;
+      padding-top: 1rem;
+      border: none;
+      font-size: 1rem;
+      outline: none;
+    }
+    
+    .form input:placeholder-shown + .label-name .content-name {
+      transform: translateY(1.45rem);
+      color: gray;
+      font-size: 1rem;
+    }
+    
+    .form input:placeholder-shown + .label-name::after {
+      transform: translateX(-100%);
+    }
+    
+    .form input:not(:focus):invalid + .label-name::after {
+      border-bottom-color: red;
+    }
+    
+    .form label {
+      position: absolute;
+      bottom: 0px;
+      left: 0%;
+      height: 100%;
+      width: 100%;
+      pointer-events: none;
+      border-bottom: 1px solid gray;
+    }
+    
+    .form label::after {
+      content: "";
+      position: absolute;
+      left: 0px;
+      bottom: -3px;
+      height: 100%;
+      width: 100%;
+      border-bottom: 3px solid #5fa8d3;
+      transition: all 0.3s ease;
+      transform: translateX(0);
+    }
+    
+    .content-name {
+      position: absolute;
+      left: 0;
+      transition: all 0.3s ease;
+      top: 0rem;
+      font-size: 0.8rem;
+      color: #5fa8d3;
+    }
+
+    .submit-form {
+      margin-top: 20px;
+      border: solid 1px rgba(255,255,255,.5);
+      border-radius: 15px;
+      outline-style: none;
+      height: 2.5em;
+      -webkit-box-shadow: 2px 4px 12px 0px rgba(0,0,0,0.75);
+      -moz-box-shadow: 2px 4px 12px 0px rgba(0,0,0,0.75);
+      box-shadow: 2px 4px 12px 0px rgba(0,0,0,0.75);
+    }
+}
+
+
+@media only screen and (max-width: 590px) {
+
+    .container {
+        flex-wrap: wrap;
+        background-color: #3A435E;
+        border-radius: 18px;
+        margin: auto;
+        width: 95%;
+        height: 75vh;
+        padding: 10px;
+        overflow-y: auto;
+        box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+    }
+
+    .functions {
+        display: flex;
+        height: 5vh;
+        margin: 5px;
+        justify-content: space-between;
+        
+    }
+
+    .searchBar {
+        border: solid 1px rgba(255,255,255,.5);
+        box-shadow: 0 14px 28px rgba(0,0,0,0.15), 0 10px 10px rgba(0,0,0,0.12);
+        color: #8f94ad;
+        padding-left: 16px;
+        border-radius: 18px;  
+        opacity: 1;
+        width: 70%;
+        outline: none;
+        height: 2.5em;
+    }
+
+    .magic-table {
+        margin-top: 20px;
+        width: 100%;
+        background-color: transparent;
+        box-shadow: none;
+      }
+    
+      .magic-table thead {
+        display: none;
+      }
+      .magic-table tr {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 15px;
+        padding: 10px;
+        border-radius: 4px;
+        background-color: #fff;
+        box-shadow: 0 3px 3px rgba(0, 0, 0, 0.2);
+      }
+      .magic-table tbody tr:nth-child(odd) {
+        background-color: #fff;
+      }
+      .magic-table td {
+        padding: 0.25rem;
+      }
+    
+      .magic-table td:nth-child(1) {
+        font-weight: bold;
+        font-size: 1.2em;
+      }
+      .magic-table td:nth-child(2)::before {
+        content: "Date: ";
+      }
+      .magic-table td:nth-child(3)::before {
+        content: "Name: ";
+      }
+      .magic-table td:nth-child(4)::before {
+        content: "Address: ";
+      }
+      .magic-table td:nth-child(5)::before {
+        content: "Phone: ";
+      }
+      .magic-table td:nth-child(6)::before {
+        content: "Email ";
+      }
+      .magic-table td::before {
+        font-weight: bold;
+      }
+
+    /* The Modal (background) */
+    .form-modal {
+        display: none; /* Hidden by default */
+        position: fixed; /* Stay in place */
+        z-index: 1; /* Sit on top */
+        padding-top: 20px; /* Location of the box */
+        left: 0;
+        top: 0;
+        width: 100%; /* Full width */
+        height: 100%; /* Full height */
+        overflow: auto; /* Enable scroll if needed */
+        background-color: rgb(0,0,0); /* Fallback color */
+        background-color: rgba(0,0,0,0.5); /* Black w/ opacity */
+    }
+    
+    /* Modal Content */
+    .form {
+        background-color: #fefefe;
+        margin: auto;
+        padding: 20px;
+        border: 1px solid #888;
+        border-radius: 20px;
+        text-align: center;
+    }
+    
+    /* The Close Button */
+    .close {
+        color: #aaaaaa;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+    }
+    
+    .close:hover,
+    .close:focus {
+        color: #000;
+        text-decoration: none;
+        cursor: pointer;
+    }
+      
+      .form-group {
+        position: relative;
+        height: 2.9rem;
+        overflow: hidden;
+      }
+      
+      .form-group:not(:first-child) {
+        margin-top: 3rem;
+      }
+      
+      .form input {
+        width: 100%;
+        height: 100%;
+        padding-top: 1rem;
+        border: none;
+        font-size: 1rem;
+        outline: none;
+      }
+      
+      .form input:placeholder-shown + .label-name .content-name {
+        transform: translateY(1.45rem);
+        color: gray;
+        font-size: 1rem;
+      }
+      
+      .form input:placeholder-shown + .label-name::after {
+        transform: translateX(-100%);
+      }
+      
+      .form input:not(:focus):invalid + .label-name::after {
+        border-bottom-color: red;
+      }
+      
+      .form label {
+        position: absolute;
+        bottom: 0px;
+        left: 0%;
+        height: 100%;
+        width: 100%;
+        pointer-events: none;
+        border-bottom: 1px solid gray;
+      }
+      
+      .form label::after {
+        content: "";
+        position: absolute;
+        left: 0px;
+        bottom: -3px;
+        height: 100%;
+        width: 100%;
+        border-bottom: 3px solid #5fa8d3;
+        transition: all 0.3s ease;
+        transform: translateX(0);
+      }
+      
+      .content-name {
+        position: absolute;
+        left: 0;
+        transition: all 0.3s ease;
+        top: 0rem;
+        font-size: 0.8rem;
+        color: #5fa8d3;
+      }
+
+      .submit-form {
+        margin-top: 20px;
+        border: solid 1px rgba(255,255,255,.5);
+        border-radius: 15px;
+        outline-style: none;
+        height: 2.5em;
+        -webkit-box-shadow: 2px 4px 12px 0px rgba(0,0,0,0.75);
+        -moz-box-shadow: 2px 4px 12px 0px rgba(0,0,0,0.75);
+        box-shadow: 2px 4px 12px 0px rgba(0,0,0,0.75);
+      }
+}
+
+@media only screen and (max-width: 340px) {
+    .container {
+        flex-wrap: wrap;
+        background-color: #3A435E;
+        border-radius: 18px;
+        margin: auto;
+        width: 95%;
+        height: 75vh;
+        padding: 10px;
+        box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+    }
+
+    .functions {
+        display: flex;
+        flex-direction: column-reverse;
+        margin-top: 50px;
+        align-items: center;
+    }
+
+    .searchBar {
+        border: solid 1px rgba(255,255,255,.5);
+        box-shadow: 0 14px 28px rgba(0,0,0,0.15), 0 10px 10px rgba(0,0,0,0.12);
+        color: #8f94ad;
+        padding-left: 16px;
+        border-radius: 18px;  
+        opacity: 1;
+        width: 90%;
+        outline: none;
+        height: 2.5em;
+        margin-top: 20px;
+    }
+
+    .magic-table {
+        margin-top: 20px;
+        background-color: transparent;
+        box-shadow: none;
+      }
+    
+      .magic-table thead {
+        display: none;
+      }
+
+      .magic-table tr {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 15px;
+        padding: 5px;
+        border-radius: 4px;
+        background-color: #fff;
+        box-shadow: 0 3px 3px rgba(0, 0, 0, 0.2);
+      }
+      .magic-table tbody tr:nth-child(odd) {
+        background-color: #fff;
+      }
+      .magic-table td {
+        padding: 0.25rem;
+      }
+    
+      .magic-table td:nth-child(1) {
+        font-weight: bold;
+        font-size: 1.2em;
+      }
+      .magic-table td:nth-child(2)::before {
+        content: "Date: ";
+      }
+      .magic-table td:nth-child(3)::before {
+        content: "Name: ";
+      }
+      .magic-table td:nth-child(4)::before {
+        content: "Address: ";
+      }
+      .magic-table td:nth-child(5)::before {
+        content: "Phone: ";
+      }
+      .magic-table td:nth-child(6)::before {
+        content: "Email ";
+      }
+      .magic-table td::before {
+        font-weight: bold;
+      }
+
+      .message-div {
+        background-color: #5fa8d3;
+        border-radius: 5px;
+        padding: 1px;
+        -webkit-box-shadow: 2px 4px 12px 0px rgba(0,0,0,0.75);
+        -moz-box-shadow: 2px 4px 12px 0px rgba(0,0,0,0.75);
+        box-shadow: 2px 4px 12px 0px rgba(0,0,0,0.75);
+        text-align: center;
+      }
+
+      .msg-close {
+        color: #aaaaaa;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+      }
+
+      .order-table {
+        border-collapse: collapse;
+        font-family: sans-serif;
+        font-size: 10px;
+        background-color: #fff;
+        box-shadow: 0 3px 3px rgba(0, 0, 0, 0.1);
+        border-radius: 5px;
+        overflow-x: auto;
+        text-align: left;
+        width: 100%;
+      }
+      
+      .order-table tbody tr:nth-child(odd) {
+        background-color: rgba(100, 150, 250, 0.05);
+      }
+      
+      .order-table td,
+      th {
+        white-space: nowrap;
+        padding: 2px;
+        color: #3A435E;
+      }
+
+      a.order-link { 
+        height: 3em;
+      }
+    
+}
+
+@media only screen and (max-height: 568px) {
+  .container {
+      flex-wrap: wrap;
+      background-color: #3A435E;
+      border-radius: 18px;
+      margin: auto;
+      width: 95%;
+      height: 75vh;
+      padding: 10px;
+      box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+  }
+}
