@@ -12,9 +12,6 @@ import os
 
 main = Blueprint("main", __name__)
 
-UPLOAD_PATH = "E:\\Desktop\\Programming\\Dashboard\\Starline\\static\\Orders\\"
-PDF_PATH = "/static/Orders/"
-
 
 @main.route("/")
 def root():
@@ -128,34 +125,17 @@ def orders(customer_id):
 @login_required
 def add_order(customer_id):
     if request.method == "POST":
-        pdf_files = []
-
-        files = request.files.getlist("order")
         form = request.form
 
         order_count = db.session.query(Order).count()
 
-        if len(files) > 1:
-            for pdf in files:
-                pdf.save(os.path.join(UPLOAD_PATH, secure_filename(pdf.filename)))
-                pdf_files.append(PDF_PATH + pdf.filename)
+        order = Order(
+            id=form["invoice"],
+            customer_id=customer_id,
+            order=form["order"],
+            price=form["price"],
+        )
 
-            order = Order(
-                id=form["invoice"],
-                customer_id=customer_id,
-                order_sheet1=pdf_files[0],
-                order_sheet2=pdf_files[1],
-            )
-        else:
-            pdf = request.files["order"]
-            pdf.save(os.path.join(UPLOAD_PATH, secure_filename(pdf.filename)))
-            pdf_files.append(PDF_PATH + pdf.filename)
-
-            order = Order(
-                id=form["invoice"], customer_id=customer_id, order_sheet1=pdf_files[0]
-            )
-
-        print(pdf_files)
         print("Adding Order to database...\n")
 
         if Order.query.filter_by(id=order.id).first():
