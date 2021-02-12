@@ -69,6 +69,8 @@ def index():
 def add_customer():
     if request.method == "POST":
         form = request.form
+
+        count = db.session.query(Customer).count()
         print("Adding Customer to database...\n")
 
         customer = Customer(
@@ -85,6 +87,8 @@ def add_customer():
 
         if customer_exists:
             flash("Error: Phone number is already in use!")
+        elif count >= 49:
+            flash("Error: Too many customers")
         else:
             print(customer.__repr__())
             db.session.add(customer)
@@ -129,6 +133,8 @@ def add_order(customer_id):
         files = request.files.getlist("order")
         form = request.form
 
+        order_count = db.session.query(Order).count()
+
         if len(files) > 1:
             for pdf in files:
                 pdf.save(os.path.join(UPLOAD_PATH, secure_filename(pdf.filename)))
@@ -154,6 +160,8 @@ def add_order(customer_id):
 
         if Order.query.filter_by(id=order.id).first():
             flash("Error: Invoice number already in use")
+        elif order_count >= 49:
+            flash("Error: Too many orders")
         else:
             print(order.__repr__())
             db.session.add(order)
