@@ -10,7 +10,7 @@
   <h3 align="center">Dash Demo</h3>
 
   <p align="center">
-    Dash Demo is a simple and web application to keep track of your customers and orders.
+    Dash Demo is a simple web application to keep track of your customers and orders.
     <br />
     <br />
     This is a similar version of an application that was developed for a company. Some changes have been made to be able to showcase the application and allow for previewing 
@@ -40,7 +40,7 @@
 ## About The Project
 ![roll command](images/search_customer.gif)
 
-As stated before this is a simple web application for keeping track of Customers and their orders. This was originally developed for a company, but this version has seen changes to allow for the demo.
+As stated before this is a simple web application for keeping track of customers and their orders. This was originally developed for a company, but this version has seen changes to allow for the demo.
 
 ## Installation
 
