@@ -3,6 +3,5 @@
 /errors/__pycache__
 /main/__pycache__
 /env
-*.db
 *.pdf
 *.pyc
