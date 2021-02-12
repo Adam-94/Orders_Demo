@@ -51,8 +51,8 @@
     <tr>
       <th scope="col">#</th>
       <th scope="col">Date</th>
-      <th scope="col">1</th>
-      <th scope="col">2</th>
+      <th scope="col">Price</th>
+      <th scope="col">Order</th>
       <th scope="col">Delete</th>
     </tr>
   </thead>
@@ -62,8 +62,8 @@
     <tr>
       <td>{{ order.id }}</td>
       <td>{{ order.date_added.strftime('%d-%m-%Y') }}</td>
-      <td><a href="{{ order.order_sheet1 }}" class="order-link">PDF</a></td>
-      <td><a href="{{ order.order_sheet2 }}" class="order-link" id="order2">PDF</a></td>
+      <td><span>£</span>{{ order.price }}</td>
+      <td>{{ order.order}}</td>
       <td><a href="{{ url_for('main.delete_order', customer_id=order.customer_id, order_id=order.id) }}"
           class="link-btn" onclick="return confirm('Are you sure you want to delete this order?')">Delete</a></td>
     </tr>
@@ -87,9 +87,18 @@
 
     <!-- start form group -->
     <div class="form-group">
-      <input type="file" multiple="multiple" name="order" placeholder=" " id="address" autocomplete="off" required>
+      <input type="text" multiple="multiple" name="price" placeholder=" " id="address" autocomplete="off" required>
       <label for="address" class="label-name">
-        <span class="content-name">File</span>
+        <span class="content-name">Price</span>
+      </label>
+    </div>
+    <!-- end form group -->
+
+    <!-- start form group -->
+    <div class="form-group">
+      <input type="text" multiple="multiple" name="order" placeholder=" " id="address" autocomplete="off" required>
+      <label for="address" class="label-name">
+        <span class="content-name">Order</span>
       </label>
     </div>
     <!-- end form group -->

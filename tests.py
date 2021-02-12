@@ -18,8 +18,8 @@ class Setup(unittest.TestCase):
             db.create_all()
 
             # Create admin
-            password = bcrypt.generate_password_hash("PoopyButthole01")
-            admin = Admin(email="bob@aol.com", password=password)
+            password = bcrypt.generate_password_hash("demo")
+            admin = Admin(email="demo", password=password)
             db.session.add(admin)
             db.session.commit()
 
@@ -33,7 +33,7 @@ class LoginLogout(Setup, unittest.TestCase):
     def _login(self, app, email, password):
         return self.app.post(
             "/login",
-            data=dict(email="bob@aol.com", password="PoopyButthole01"),
+            data=dict(email="demo", password="demo"),
             follow_redirects=True,
         )
 
@@ -47,7 +47,7 @@ class LoginLogout(Setup, unittest.TestCase):
 
     def test_login_logout(self):
         response = self._login(app, email="bob@aol.com", password="PoopyButthole01")
-        self.assertIn(b"Starline Blinds & Awnings - Dashboard", response.data)
+        self.assertIn(b"Demo", response.data)
 
         response = self._logout(app)
         self.assertIn(b"Login", response.data)

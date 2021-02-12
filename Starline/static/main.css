@@ -141,7 +141,7 @@ textarea {
     margin: auto;
     margin-top: 30px;
     min-width: 50%;
-    max-width: 90%;
+    width: 100%;
 }
 
 .magic-table {
@@ -399,7 +399,7 @@ textarea {
 	------------------------- Mobile -------------------------
 */
 
-@media only screen and (max-width: 850px) {
+@media only screen and (max-width: 910px) {
 
   .container {
       flex-wrap: wrap;
