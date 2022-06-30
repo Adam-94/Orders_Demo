@@ -7,6 +7,7 @@
 <br />
 <p align="center">
   <a href="https://github.com/adam-94/dash_demo"></a>
+  <h2>Project Currently Archived</h2>
   <h3 align="center">Dash Demo</h3>
 
   <p align="center">
